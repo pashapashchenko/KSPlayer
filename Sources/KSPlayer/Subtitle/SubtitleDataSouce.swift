@@ -242,10 +242,10 @@ public class AssrtSubtitleDataSouce: SearchSubtitleDataSouce {
         guard let json = try? JSONSerialization.jsonObject(with: data) as? [String: Any] else {
             return infos
         }
-        guard let status = json["status"] as? Int, status == 0 else {
+        guard let status = json?["status"] as? Int, status == 0 else {
             return infos
         }
-        guard let subDict = json["sub"] as? [String: Any], let subArray = subDict["subs"] as? [[String: Any]], let sub = subArray.first else {
+        guard let subDict = json?["sub"] as? [String: Any], let subArray = subDict["subs"] as? [[String: Any]], let sub = subArray.first else {
             return infos
         }
         if let fileList = sub["filelist"] as? [[String: String]] {
@@ -346,7 +346,7 @@ public class OpenSubtitleDataSouce: SearchSubtitleDataSouce {
         guard let json = try? JSONSerialization.jsonObject(with: data) as? [String: Any] else {
             return nil
         }
-        guard let link = json["link"] as? String, let fileName = json["file_name"] as?
+        guard let link = json?["link"] as? String, let fileName = json["file_name"] as?
             String, let url = URL(string: link)
         else {
             return nil
