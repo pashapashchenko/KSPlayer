@@ -346,7 +346,7 @@ public class OpenSubtitleDataSouce: SearchSubtitleDataSouce {
         guard let json = try? JSONSerialization.jsonObject(with: data) as? [String: Any] else {
             return nil
         }
-        guard let link = json?["link"] as? String, let fileName = json["file_name"] as?
+        guard let link = json?["link"] as? String, let fileName = json?["file_name"] as?
             String, let url = URL(string: link)
         else {
             return nil
