@@ -364,15 +364,15 @@ public func runOnMainThread(block: @escaping () -> Void) {
 
 public extension URL {
     var isMovie: Bool {
-        if let typeID = try? resourceValues(forKeys: [.typeIdentifierKey]).typeIdentifier as CFString? {
-            return UTTypeConformsTo(typeID, kUTTypeMovie)
+        if let typeID = try? resourceValues(forKeys: [.typeIdentifierKey]).typeIdentifier as CFString?, typeID != nil  {
+            return UTTypeConformsTo(typeID!, kUTTypeMovie)
         }
         return false
     }
 
     var isAudio: Bool {
-        if let typeID = try? resourceValues(forKeys: [.typeIdentifierKey]).typeIdentifier as CFString? {
-            return UTTypeConformsTo(typeID, kUTTypeAudio)
+        if let typeID = try? resourceValues(forKeys: [.typeIdentifierKey]).typeIdentifier as CFString?, typeID != nil {
+            return UTTypeConformsTo(typeID!, kUTTypeAudio)
         }
         return false
     }
